@@ -1,0 +1,18 @@
+SheldonFS
+
+The Problem:
+
+Me and my wife have very cluttered file systems on our computers. We both have dual boot (Ubuntu + Windows) on our PCs, and we have a shared macbook. We also use our own Google Drive accounts as our cloud file storage solution. Over the years it has become such that things are very messy:
+
+- it's unclear which file is stored on which file system
+- there are duplicates all over the place
+- there are files which have very unintuitive file names
+- and most importantly, there is a lack of a file organizing and naming system which then keeps adding to the mess
+
+My Idea:
+
+So the first thing I want to do is come up with a robust file organizing and naming system that can work cross-platform (wherever possible), have the ability to scale as per future needs, and stand the test of time. And to really come up with something that takes the current state of affairs into account, there needs to be a solid understanding of the entire hierarchy all the files and folders across all the different file systems. I'm willing to build a software solution that helps us do this. I would develop the organization strategy in tandem with this software on my own stuff, and by the time I'm finished, I'm hoping that the software is in such shape that it is quite straight-forward for my wife to use it for her own stuff.
+
+The name of this project would be SheldonFS, as in very organized and meticulous like Sheldon Cooper from The Big Bang Theory.
+
+Now let's start with ideating. I would like to know that if I were to ask you to create this organization protocol for me, what would you need to know? And is this information easily available to you or do we need to write scripts for it? Tell me each and everything so I have an idea of how feasible this project is and how long would it take to build it all.

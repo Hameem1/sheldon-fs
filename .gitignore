@@ -1,0 +1,17 @@
+# Ignore the code repository directory
+SheldonFS/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+.~*
