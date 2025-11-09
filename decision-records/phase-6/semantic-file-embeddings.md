@@ -1,8 +1,8 @@
 # Decision Record: Semantic File Organization via Vector Embeddings
 
-**Status:** Approved for Phase 4 implementation
+**Status:** Approved for Phase 6 implementation
 **Date:** 2025-11-08
-**Phase:** 4 (Future Feature)
+**Phase:** 6 (Future Feature)
 
 ---
 
@@ -140,7 +140,7 @@ Automatically discover file clusters by content:
 
 ## Implementation Approach
 
-### Phase 4 Architecture
+### Phase 6 Architecture
 
 ```
 ┌─────────────────────┐
@@ -150,7 +150,7 @@ Automatically discover file clusters by content:
           ↓
 ┌─────────────────────┐
 │  Enrichment Pipeline│ → Extract text from files
-│  (Phase 4)          │ → Generate embeddings (Ollama)
+│  (Phase 6)          │ → Generate embeddings (Ollama)
 │                     │ → Store in sqlite-vec
 └─────────────────────┘
           ↓
@@ -167,7 +167,7 @@ Automatically discover file clusters by content:
 # Phase 1: Fast metadata scan
 sheldonfs scan ~/Documents
 
-# Phase 4: Optional semantic enrichment
+# Phase 6: Optional semantic enrichment
 sheldonfs enrich --scan-id=<id> --enable-embeddings
 
 # Semantic queries
@@ -295,14 +295,13 @@ class PgVectorStore implements VectorStore { ... }
 
 ## Timeline & Dependencies
 
-**Phase 1-3 Prerequisites:**
-- ✅ Metadata scanner
-- ✅ SQLite database
-- ⏳ Tests (Phase 2)
-- ⏳ Duplicate detection (Phase 2)
-- ⏳ Web UI + API (Phase 3)
+**Technical Dependencies (from earlier phases):**
+- Metadata scanner (Phase 1) - Provides file data to enrich with embeddings
+- SQLite database (Phase 1) - Storage backend for sqlite-vec extension
+- Tests infrastructure (Phase 2) - Ensures stability before adding complexity
+- Duplicate detection (Phase 2) - Related feature for semantic comparison
 
-**Phase 4 Implementation:**
+**Phase 6 Implementation:**
 1. Research & prototyping (1 week)
 2. sqlite-vec integration (1 week)
 3. Text extraction pipeline (2 weeks)
@@ -314,21 +313,11 @@ class PgVectorStore implements VectorStore { ... }
 
 ---
 
-## Decision Makers
-
-- **Proposer:** Hameem
-- **Analyst:** Claude (AI Assistant)
-- **Final Decision:** Hameem
-- **Status:** Approved for Phase 4
-
----
-
 ## Notes
 
-- This is a "future feature" - do not implement before completing Phases 1-3
 - Keep design flexible with abstraction layers for potential database migration
 - Monitor sqlite-vec development for new features (ANN indexes coming)
-- Consider user feedback from Phases 1-3 before finalizing Phase 4 design
+- Consider user feedback from earlier phases before finalizing Phase 6 design
 - May need to adjust based on actual file type distribution in user data
 
 ---
@@ -339,5 +328,5 @@ _This section will track any updates or changes to this decision as implementati
 
 ---
 
-**Last Updated:** 2025-11-08
-**Next Review:** After Phase 3 completion
+**Last Updated:** 2025-11-09
+**Next Review:** After Phase 5 completion

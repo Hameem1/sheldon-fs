@@ -16,8 +16,12 @@ Decision records serve as:
 decision-records/
 ├── phase-1/          # Foundation: Scanner, Metadata, CLI
 ├── phase-2/          # Testing, Database, Duplicate Detection
-├── phase-3/          # Web UI & API
-├── phase-4/          # Semantic Intelligence & Desktop App
+├── phase-3/          # Open-Source Preparation
+├── phase-4/          # Web UI & API
+├── phase-5/          # Polish & Optimization
+├── phase-6/          # Semantic Intelligence
+├── phase-7/          # Open-Source Release
+├── phase-8/          # Desktop Application
 └── README.md         # This file
 ```
 
@@ -60,8 +64,8 @@ Each decision record should include:
 
 ## Existing Records
 
-### Phase 4
-- [Semantic File Organization via Vector Embeddings](./phase-4/semantic-file-embeddings.md) - LLM-powered intelligent file organization using local embeddings
+### Phase 6
+- [Semantic File Organization via Vector Embeddings](./phase-6/semantic-file-embeddings.md) - LLM-powered intelligent file organization using local embeddings
 
 ## Linking to Decision Records
 
@@ -72,9 +76,9 @@ In CLAUDE.md and other documentation:
 
 Example:
 ```markdown
-### Phase 4: Semantic Intelligence
+### Phase 6: Semantic Intelligence
 Enable LLM-powered file understanding for intelligent organization.
-See [full decision record](./decision-records/phase-4/semantic-file-embeddings.md) for details.
+See [full decision record](./decision-records/phase-6/semantic-file-embeddings.md) for details.
 ```
 
 ## Updating Records

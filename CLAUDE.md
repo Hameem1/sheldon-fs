@@ -54,13 +54,24 @@ Analyze scan results from Phase 1 to develop intelligent organization strategies
 - **Duplicate analysis** - Study duplicate patterns to inform cleanup strategies
 - **Documentation** - Create organization guidelines and best practices for users
 
-### Phase 3: Web UI & API
+### Phase 3: Open-Source Preparation
+Prepare the project for open-source development without adding new functionality:
+- **Repository consolidation** - Refactor from two-repo structure to single monorepo with clean organization
+- **CI/CD pipelines** - GitHub Actions for automated testing, linting, and builds
+- **Installation & distribution** - npm package publishing, easy installation scripts
+- **Developer documentation** - CONTRIBUTING.md, architecture documentation, setup guides
+- **Code quality** - Enhanced error handling, comprehensive logging, code coverage targets
+- **Changelog management** - Automated changelog generation and versioning strategy
+- **Cross-platform testing** - Verify compatibility on Windows, macOS, and Linux
+- **License selection** - Choose and apply appropriate open-source license
+
+### Phase 4: Web UI & API
 - Express backend API
 - React + TypeScript frontend
 - Localhost web interface for reviewing duplicates and managing files
 - Reuses core logic from Phase 1
 
-### Phase 3.5: Polish & Optimization
+### Phase 5: Polish & Optimization
 Post-web-app enhancements and production-readiness improvements:
 - **HTML report generation** for visual, shareable analysis
 - **Database migration system** for schema evolution (when multi-user deployment needed)
@@ -68,8 +79,8 @@ Post-web-app enhancements and production-readiness improvements:
 - **Performance optimization** - Improve scan speed, memory usage, query performance
 - **Enhanced CLI features** - Interactive mode, better progress indicators, configuration management
 
-### Phase 4: Semantic Intelligence
-**LLM-powered content understanding for intelligent file organization** - [Full Decision Record](./decision-records/phase-4/semantic-file-embeddings.md)
+### Phase 6: Semantic Intelligence
+**LLM-powered content understanding for intelligent file organization** - [Full Decision Record](./decision-records/phase-6/semantic-file-embeddings.md)
 
 - **Local embedding generation** via Ollama + nomic-embed-text (768-dimensional vectors)
 - **Vector storage** using sqlite-vec extension (fast, local, privacy-preserving)
@@ -79,7 +90,18 @@ Post-web-app enhancements and production-readiness improvements:
 - **Smart auto-categorization** - Understand file content for better organization
 - **Organization suggestions** - Recommend where new files should go based on content
 
-### Phase 5: Desktop Application
+### Phase 7: Open-Source Release
+Actually release the project as open-source and establish community foundations:
+- **Public repository** - Move from private to public GitHub repository
+- **Community guidelines** - CODE_OF_CONDUCT.md, issue templates, pull request templates
+- **Public documentation** - Comprehensive README, user guides, FAQ
+- **Release announcement** - Blog post, social media, relevant communities (Reddit, HackerNews)
+- **Contributor onboarding** - First-time contributor guides, good first issues
+- **Community channels** - Discord/Slack community, GitHub Discussions
+- **Project governance** - Decision-making process, roadmap transparency
+- **Support infrastructure** - Issue triage workflow, response time expectations
+
+### Phase 8: Desktop Application
 - **Electron-based desktop app** for non-technical users
 - **Polished GUI** with drag-and-drop, visual file management
 - **System tray integration** for background monitoring
@@ -152,18 +174,24 @@ statistics: id, session_id, metric_type, value, metadata
 - **winston** - Structured logging for CLI
 
 **Phase 3:**
+- **GitHub Actions** - CI/CD automation
+- **semantic-release** - Automated versioning and changelog
+- **pkg** or **@vercel/ncc** - Standalone executable bundling
+- **cross-env** - Cross-platform environment variables
+
+**Phase 4:**
 - **Express** - Web server for API and serving React app
 - **React** - Frontend UI
 - **Vite** - Frontend build tool
 - **TanStack Query** - Data fetching
 - **Tailwind CSS** - Styling
 
-**Phase 4:**
+**Phase 6:**
 - **Ollama** - Local LLM runtime for embedding generation
 - **nomic-embed-text** - 768-dimensional text embedding model
 - **sqlite-vec** - SQLite extension for vector storage and similarity search
 
-**Phase 5:**
+**Phase 8:**
 - **Electron** - Cross-platform desktop application framework
 - **electron-builder** - Package and distribute native installers
 
