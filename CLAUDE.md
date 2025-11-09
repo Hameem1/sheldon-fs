@@ -198,6 +198,65 @@ npm run nuke                # Remove node_modules, build, package-lock.json
 npm run clean-install       # Nuke + fresh npm install
 ```
 
+## Commit Message Guidelines
+
+### For SheldonFS/ (Code Repository)
+
+Follow conventional commits format:
+
+```
+<type>: Brief description of what the changes do
+
+[Optional: Additional bullet points to elaborate the changes]
+```
+
+**Types:**
+- `feat`: New feature or functionality
+- `fix`: Bug fix
+- `refactor`: Code restructuring without changing behavior
+- `docs`: Documentation changes only
+- `test`: Adding or updating tests
+- `chore`: Build process, tooling, dependencies
+
+**Examples:**
+```
+feat: Add owner field extraction with UID caching
+
+- Implement getOwnerName() function with username lookup
+- Add UID→username cache for performance (300-600x speedup)
+- Update metadata object to include owner field
+```
+
+```
+fix: Correct eslint ignore pattern for build directory
+
+- Changed dist/** to build/** in eslint.config.mjs
+```
+
+### For sheldon-fs/ (Parent Repository)
+
+Session-based commits for documentation and project-level changes:
+
+```
+session-{n}: Brief description of what was done in this session
+
+- Bullet point elaborating changes
+- Another bullet point
+- Additional context
+```
+
+**Session number:** Increment from the last session commit in git history.
+
+**Example:**
+```
+session-2: Enhanced metadata extraction and project documentation
+
+- Expanded file metadata to 23 comprehensive fields
+- Added MIME type extension fallback using mime package
+- Restructured development phases in CLAUDE.md
+- Established decision-records system
+```
+
 ## Key Technical Decisions
 
 ### Language & Build System
