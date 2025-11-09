@@ -23,12 +23,17 @@ SheldonFS is a cross-platform file organization and management system designed t
 - Production bundling with tsdown (output to build/)
 - Path aliases for clean imports
 - Real-world testing (1,300+ files, 37GB, ~30s scan time)
+- Test infrastructure with vitest and comprehensive helpers:
+  - 15 tests for hashCalculator with 96.96% coverage
+  - Automatic temp file generation and cleanup utilities
+  - Path alias resolution using vite-tsconfig-paths plugin
+  - Bug fix: calculatePartialHash now handles empty files correctly
 
 🚧 **Next Steps:**
-1. **Add basic tests** with vitest to ensure reliability
-2. **Build database layer** for storing scan results (better-sqlite3)
-3. **Implement duplicate detection** using hash comparisons
-4. **Add reporting functionality** (JSON, CSV output)
+1. **Build database layer** for storing scan results (better-sqlite3)
+2. **Implement duplicate detection** using hash comparisons
+3. **Add reporting functionality** (JSON, CSV output)
+4. **Expand test coverage** to metadata extraction and file scanner
 
 ## Development Phases
 
@@ -110,27 +115,19 @@ Actually release the project as open-source and establish community foundations:
 
 ## Immediate Next Steps (Start of Next Session)
 
-### 1. Add Basic Tests
-Set up vitest and create initial test suite:
-- Unit tests for hash calculator
-- Unit tests for metadata extractor
-- Integration tests for file scanner
-- Test with mock file structures
-- Test error handling scenarios
-
-### 2. Database Layer Implementation
+### 1. Database Layer Implementation
 - Install and configure better-sqlite3
 - Design and implement schema for storing file metadata (all 23 fields)
 - Build data access layer with type-safe queries
 - Note: No migration system needed yet (local-only, can rescan if schema changes)
 
-### 3. Duplicate Detection
+### 2. Duplicate Detection
 - Query files by hash to identify duplicates
 - Distinguish between true duplicates vs. hard links (same inode)
 - Calculate wasted space from duplicates
 - Group duplicates for user review
 
-### 4. Basic Reporting
+### 3. Basic Reporting
 - JSON export for programmatic access
 - CSV export for spreadsheet analysis
 - Summary statistics (file counts by category, largest files, duplicate groups)
@@ -284,6 +281,17 @@ session-2: Enhanced metadata extraction and project documentation
 - Restructured development phases in CLAUDE.md
 - Established decision-records system
 ```
+
+### Important Notes
+
+**Do NOT include in commits:**
+- ❌ "🤖 Generated with [Claude Code](https://claude.com/claude-code)"
+- ❌ "Co-Authored-By: Claude <noreply@anthropic.com>"
+- These lines should never appear in commit messages
+
+**Git operations:**
+- ❌ Do NOT push to GitHub unless explicitly requested
+- The user prefers to handle pushes manually
 
 ## Key Technical Decisions
 

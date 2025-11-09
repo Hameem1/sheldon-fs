@@ -1,5 +1,5 @@
 ---
-name: sheldonfs-session-wrapup
+name: session-wrapup
 description: Complete end-of-session workflow for SheldonFS project. Handles code commits, quality checks, documentation updates, and merge process. Use when finishing a development session or feature branch.
 allowed-tools: Bash, Read, Edit, Write, Grep, Glob
 ---
