@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-SheldonFS is a cross-platform file organization and management system designed to help users analyze, organize, and manage files across multiple storage systems (Windows, Ubuntu, macOS, and Google Drive). The goal is to identify duplicates, create a robust naming convention, and establish a scalable file organization strategy.
+SheldonFS is a cross-platform file organization and management system designed to help users analyze, organize, and manage files across multiple storage systems (Windows, Linux, macOS, and Google Drive). The goal is to identify duplicates, create a robust naming convention, and establish a scalable file organization strategy.
 
 ## Current Status (Phase 1 - In Progress)
 
@@ -17,23 +17,32 @@ SheldonFS is a cross-platform file organization and management system designed t
   - Organization: isHidden, depth, finderTags, finderColor
   - Advanced: inode, hardLinkCount, isExecutable
 - MIME type detection with binary + extension fallback (file-type + mime packages)
-- CLI interface for testing scans
+- CLI interface for testing scans with automatic source system detection
 - TypeScript build setup with ESM modules
 - ESLint + Prettier integration
 - Production bundling with tsdown (output to build/)
 - Path aliases for clean imports
 - Real-world testing (1,300+ files, 37GB, ~30s scan time)
-- Test infrastructure with vitest and comprehensive helpers:
-  - 15 tests for hashCalculator with 96.96% coverage
+- **Comprehensive test suite** (67 tests passing, 74.6% overall coverage):
+  - hashCalculator: 15 tests, 96.96% coverage
+  - metadataExtractor: 32 tests (31 passing, 1 platform-specific skipped)
+  - fileScanner: 21 tests, 97.22% coverage
   - Automatic temp file generation and cleanup utilities
   - Path alias resolution using vite-tsconfig-paths plugin
   - Bug fix: calculatePartialHash now handles empty files correctly
+- **Cross-platform support**:
+  - Source system auto-detection (macOS, Linux, Windows)
+  - Platform-specific tests with conditional execution
+  - LINUX as general source system (replaces UBUNTU)
+- **Centralized configuration**:
+  - File extensions grouped by category (70+ extensions across 7 categories)
+  - Default scan exclusion patterns (VCS, dependencies, system files)
+  - Type-safe with readonly constants
 
 🚧 **Next Steps:**
 1. **Build database layer** for storing scan results (better-sqlite3)
 2. **Implement duplicate detection** using hash comparisons
 3. **Add reporting functionality** (JSON, CSV output)
-4. **Expand test coverage** to metadata extraction and file scanner
 
 ## Development Phases
 
@@ -222,6 +231,28 @@ npm test                    # Run tests with vitest
 npm run nuke                # Remove node_modules, build, package-lock.json
 npm run clean-install       # Nuke + fresh npm install
 ```
+
+## Development Best Practices
+
+### File Operations
+**ALWAYS run `pwd` before creating or removing files** to verify you're in the correct directory. This prevents accidentally creating nested directories (e.g., `SheldonFS/SheldonFS/`) or operating in the wrong location.
+
+### Quality Gates
+**ALWAYS run `npm run typecheck && npm run lint:fix` at the end of any development work** as a final quality gate before committing or wrapping up. This ensures:
+- Type safety is maintained
+- Code formatting is consistent
+- Linting issues are caught and fixed
+
+```bash
+# Verify tests still pass
+npm test
+
+# At the end of any work session
+npm run typecheck && npm run lint:fix
+
+```
+
+This should be done even if you've run these commands earlier, as changes during the session may have introduced new issues.
 
 ## Commit Message Guidelines
 
