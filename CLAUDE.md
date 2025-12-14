@@ -38,9 +38,15 @@ SheldonFS is a cross-platform file organization and management system designed t
   - File extensions grouped by category (70+ extensions across 7 categories)
   - Default scan exclusion patterns (VCS, dependencies, system files)
   - Type-safe with readonly constants
+- **Database design completed** - Comprehensive design document with schema, decisions, and implementation strategy
+  - Drizzle ORM + better-sqlite3 chosen (50-130x faster than LibSQL)
+  - 5 core tables designed (files, scan_sessions, scan_errors, duplicate_groups, statistics)
+  - All design decisions researched and documented
+  - Migration strategy: drizzle-kit push for Phase 1, generate for Phase 3+
+  - Config file approach for user settings (~/.sheldonfs/config.json)
 
 🚧 **Next Steps:**
-1. **Build database layer** for storing scan results (better-sqlite3)
+1. **Implement database layer** - Build schema, repositories, and data access layer with Drizzle ORM
 2. **Implement duplicate detection** using hash comparisons
 3. **Add reporting functionality** (JSON, CSV output)
 
@@ -125,10 +131,21 @@ Actually release the project as open-source and establish community foundations:
 ## Immediate Next Steps (Start of Next Session)
 
 ### 1. Database Layer Implementation
+Implement SQLite database for storing scan results and enabling duplicate detection.
+
+**See [DATABASE_DESIGN.md](./DATABASE_DESIGN.md) for complete specifications:**
+- Schema design and table relationships
+- Type-safe TypeScript integration
+- Repository pattern architecture
+- Common query patterns and performance optimization
+- Testing strategy
+
+**Key implementation tasks:**
 - Install and configure better-sqlite3
-- Design and implement schema for storing file metadata (all 23 fields)
-- Build data access layer with type-safe queries
-- Note: No migration system needed yet (local-only, can rescan if schema changes)
+- Implement schema and connection management
+- Build repository layer with CRUD operations
+- Add conversion utilities (FileMetadata ↔ database records)
+- Write database integration tests
 
 ### 2. Duplicate Detection
 - Query files by hash to identify duplicates
@@ -141,30 +158,6 @@ Actually release the project as open-source and establish community foundations:
 - CSV export for spreadsheet analysis
 - Summary statistics (file counts by category, largest files, duplicate groups)
 
-## Future Database Schema (To Be Implemented)
-
-When the database layer is built, it will use better-sqlite3 with the following tables:
-
-```sql
--- Core file information (all 23 metadata fields)
-files: id, path, name, extension, hash, size, mime_type, category,
-       source_system, created_at, modified_at, accessed_at,
-       is_symlink, symlink_target, permissions, owner,
-       is_hidden, depth, finder_tags, finder_color,
-       inode, hard_link_count, is_executable
-
--- Duplicate relationships
-duplicates: id, hash, file_count, total_size, wasted_space,
-            is_hard_link_group
-
--- Scan history
-scan_sessions: id, path, source_system, started_at, completed_at,
-               total_files, total_size, errors_count, duration_ms
-
--- Cached statistics
-statistics: id, session_id, metric_type, value, metadata
-```
-
 ### Tech Stack
 
 **Core Dependencies:**
@@ -175,7 +168,9 @@ statistics: id, session_id, metric_type, value, metadata
 - **fast-glob** - High-performance file pattern matching
 - **file-type** - Binary MIME type detection (magic numbers)
 - **mime** - Extension-based MIME type fallback (800+ types)
-- **better-sqlite3** - Fast synchronous SQLite database
+- **better-sqlite3** - Fast synchronous SQLite database driver (50-130x faster than LibSQL for local operations)
+- **drizzle-orm** - Lightweight TypeScript ORM (~7.4kb, type-safe, SQL-like syntax)
+- **drizzle-kit** - Schema management and migrations tooling
 - **@googleapis/drive** - Official Google Drive API client (cloud file scanning)
 - **winston** - Structured logging for CLI
 
