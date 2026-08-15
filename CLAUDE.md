@@ -44,11 +44,46 @@ SheldonFS is a cross-platform file organization and management system designed t
   - All design decisions researched and documented
   - Migration strategy: drizzle-kit push for Phase 1, generate for Phase 3+
   - Config file approach for user settings (~/.sheldonfs/config.json)
+- **Session wrap-up workflow documented** - `session-wrapup` skill rewritten around the two-repository structure
+  - Explicit merge strategies: normal merge for SheldonFS/, squash merge with `session-X` commit for sheldon-fs/
+  - Separate commits for lint fixes and typecheck fixes; test failures documented, never fixed during wrap-up
+  - Feature branches kept intact after merge
+  - Quick reference with success criteria and anti-patterns
 
 🚧 **Next Steps:**
 1. **Implement database layer** - Build schema, repositories, and data access layer with Drizzle ORM
 2. **Implement duplicate detection** using hash comparisons
 3. **Add reporting functionality** (JSON, CSV output)
+
+## Immediate Next Steps (Start of Next Session)
+
+### 1. Database Layer Implementation
+Implement SQLite database for storing scan results and enabling duplicate detection.
+
+**See [DATABASE_DESIGN.md](./DATABASE_DESIGN.md) for complete specifications:**
+- Schema design and table relationships
+- Type-safe TypeScript integration
+- Repository pattern architecture
+- Common query patterns and performance optimization
+- Testing strategy
+
+**Key implementation tasks:**
+- Install and configure better-sqlite3
+- Implement schema and connection management
+- Build repository layer with CRUD operations
+- Add conversion utilities (FileMetadata ↔ database records)
+- Write database integration tests
+
+### 2. Duplicate Detection
+- Query files by hash to identify duplicates
+- Distinguish between true duplicates vs. hard links (same inode)
+- Calculate wasted space from duplicates
+- Group duplicates for user review
+
+### 3. Basic Reporting
+- JSON export for programmatic access
+- CSV export for spreadsheet analysis
+- Summary statistics (file counts by category, largest files, duplicate groups)
 
 ## Development Phases
 
@@ -127,36 +162,6 @@ Actually release the project as open-source and establish community foundations:
 - **System tray integration** for background monitoring
 - **Cross-platform installers** (Windows .exe, macOS .dmg, Linux .AppImage)
 - **Auto-update system** for seamless version upgrades
-
-## Immediate Next Steps (Start of Next Session)
-
-### 1. Database Layer Implementation
-Implement SQLite database for storing scan results and enabling duplicate detection.
-
-**See [DATABASE_DESIGN.md](./DATABASE_DESIGN.md) for complete specifications:**
-- Schema design and table relationships
-- Type-safe TypeScript integration
-- Repository pattern architecture
-- Common query patterns and performance optimization
-- Testing strategy
-
-**Key implementation tasks:**
-- Install and configure better-sqlite3
-- Implement schema and connection management
-- Build repository layer with CRUD operations
-- Add conversion utilities (FileMetadata ↔ database records)
-- Write database integration tests
-
-### 2. Duplicate Detection
-- Query files by hash to identify duplicates
-- Distinguish between true duplicates vs. hard links (same inode)
-- Calculate wasted space from duplicates
-- Group duplicates for user review
-
-### 3. Basic Reporting
-- JSON export for programmatic access
-- CSV export for spreadsheet analysis
-- Summary statistics (file counts by category, largest files, duplicate groups)
 
 ### Tech Stack
 
@@ -410,3 +415,9 @@ Extracts **23 comprehensive metadata fields** per file:
 Important architectural and feature decisions are documented in `/decision-records/` organized by phase. These records provide deep-dive context, research, and rationale for major design choices.
 
 **See:** [Decision Records README](./decision-records/README.md) for the complete list and documentation structure.
+
+### Workflow Skills
+
+Repeatable project workflows live in `/.claude/skills/`. Invoke with `/<skill-name>`.
+
+- **session-wrapup** - End-of-session workflow: quality gates and semantic commits in `SheldonFS/`, CLAUDE.md updates and squash-merged `session-X` commits in `sheldon-fs/`.
