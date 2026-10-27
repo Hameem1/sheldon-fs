@@ -11,6 +11,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 > Until this file is rewritten, **`memory-bank/reimagining/` is the source of truth** — start
 > with `pre-requisites.md` (the Phase 0 checklist). Technical details about the existing code
 > (scanner implementation, build setup, commands, TypeScript/lint config) remain accurate.
+>
+> **Before writing or editing any doc, read `memory-bank/reimagining/documentation-principles.md`
+> and follow it.**
 
 ## Project Overview
 
