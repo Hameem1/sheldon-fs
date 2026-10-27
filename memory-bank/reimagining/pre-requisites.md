@@ -24,12 +24,12 @@ light to begin Phase 1.
 ## To-Do
 
 1. **Copy the alignment doc into the reimagining dir** — move finessing onto a working copy so the original stays put.
-   - [ ] Copy `sheldon-fs-team-alignment.md` → `memory-bank/reimagining/alignment.md`, leaving the root original untouched; all finessing happens on this copy from here on.
+   - [x] Copy `sheldon-fs-team-alignment.md` → `memory-bank/reimagining/alignment.md`, leaving the root original untouched; all finessing happens on this copy from here on.
 
 2. **Finalize the alignment doc** (`alignment.md`) — fold in every resolved clarification so it reads as the single source of truth for *what & why*.
-   - [ ] **Scope & interfaces:** CLI as a permanently-maintained first-class interface; guarded execution (before/after preview, per-suggestion accept/reject, a basic operation journal for "revert last batch"). Deferred items go in its non-goals / future section: Google Drive & other storage providers (as *future extensibility*), advanced dry-run & VCS-style rollback, automated unattended execution.
-   - [ ] **Product & tech decisions:** React; completely free / no monetization; in-app model download UX (recommend-by-hardware, baseline vs. opt-in "deep scan").
-   - [ ] **MVP intent:** basic AI in Phase 1, conversational chat in Phase 2, cross-OS DB picture working on all three OSes in Phase 1.
+   - [x] **Scope & interfaces:** CLI as a permanently-maintained first-class interface; guarded execution (before/after preview, per-suggestion accept/reject, a basic operation journal for "revert last batch"). Deferred items go in its non-goals / future section: Google Drive & other storage providers (as *future extensibility*), advanced dry-run & VCS-style rollback, automated unattended execution.
+   - [x] **Product & tech decisions:** React; completely free / no monetization; in-app model download UX (recommend-by-hardware, baseline vs. opt-in "deep scan").
+   - [x] **MVP intent:** basic AI in Phase 1, conversational chat in Phase 2, cross-OS DB picture working on all three OSes in Phase 1.
 
 3. **Create the open-questions holding pen** (`open-questions.md`) — the one place to see everything still unresolved. It holds no decisions: when an item is settled, the answer goes into its home doc and the item is deleted.
    - [ ] **Seed it** with the known open items: cloud-sync mechanism + SQLite-WAL safety, local-model runtime (bundle vs. sidecar vs. in-process), license choice.
@@ -41,12 +41,12 @@ light to begin Phase 1.
    - [ ] **Team conventions + migration:** branching / PR / review / commit norms and ticket tracking; plus how the current two-repo code (scanner core, DB design, docs) folds into the new structure.
 
 5. **Write `tech-stack.md`** — the *with-what*, tightly coupled to #4 (can be done together).
-   - [ ] **Confirm the stack:** Electron + React + Vite + Tailwind + TanStack, better-sqlite3 + Drizzle, vitest, winston — plus the AI additions (model-runtime lib, sqlite-vec).
+   - [ ] **Confirm the stack:** Electron + React + Vite + Tailwind + TanStack, better-sqlite3 + Drizzle, vitest, winston — plus the AI additions (model-runtime lib, sqlite-vec). Take over `alignment.md`'s Tech Stack section, leaving a link there.
    - [ ] **Resolve the 6 architecture keystones:** core/IPC boundary; local-model runtime; native-module (better-sqlite3) builds for Electron; long-running jobs; typed data layer; monorepo tooling.
    - [ ] **Mark decidable-now vs. needs-a-Spike**, and add each Spike to `open-questions.md`.
 
 6. **Write `phases.md`** — the big one; depends on #2–#5 being settled.
-   - [ ] **Define the 3 phases + MVP scope:** the "a little bit of everything" thin slice, with explicit in/out per feature area.
+   - [ ] **Define the 3 phases + MVP scope:** the "a little bit of everything" thin slice, with explicit in/out per feature area. Take over `alignment.md`'s Delivery Phases section, leaving a link there.
    - [ ] **Slot the pinned decisions into phases:** license decision → P1, cloud-sync Spike → P1, repo restructure + CI/CD → P1 kickoff, OSS-readiness → P2, public release + community → P3. (Ticket creation itself is Phase 0.)
    - [ ] **Define MVP "definition of done" + dogfooding plan:** your (and your wife's) real, messy file systems, verified across all three OSes.
 
