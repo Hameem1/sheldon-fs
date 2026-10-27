@@ -32,7 +32,7 @@ light to begin Phase 1.
    - [x] **MVP intent:** basic AI in Phase 1, conversational chat in Phase 2, cross-OS DB picture working on all three OSes in Phase 1.
 
 3. **Create the open-questions holding pen** (`open-questions.md`) — the one place to see everything still unresolved. It holds no decisions: when an item is settled, the answer goes into its home doc and the item is deleted.
-   - [ ] **Seed it** with the known open items: cloud-sync mechanism + SQLite-WAL safety, local-model runtime (bundle vs. sidecar vs. in-process), license choice.
+   - [x] **Seed it** with the known open items: cloud-sync mechanism + SQLite-WAL safety, local-model runtime (bundle vs. sidecar vs. in-process), license choice.
    - [ ] **Keep it current** while writing #4–#6: add open items as they surface, and delete each one as soon as it's resolved into its home doc.
 
 4. **Write the repository & collaboration strategy doc** (`repo-and-collaboration.md`) — my full analysis of your proposed structure + the team workflow.
@@ -47,7 +47,7 @@ light to begin Phase 1.
 
 6. **Write `phases.md`** — the big one; depends on #2–#5 being settled.
    - [ ] **Define the 3 phases + MVP scope:** the "a little bit of everything" thin slice, with explicit in/out per feature area. Take over `alignment.md`'s Delivery Phases section, leaving a link there.
-   - [ ] **Slot the pinned decisions into phases:** license decision → P1, cloud-sync Spike → P1, repo restructure + CI/CD → P1 kickoff, OSS-readiness → P2, public release + community → P3. (Ticket creation itself is Phase 0.)
+   - [ ] **Slot the pinned decisions into phases:** license decision → P1, cloud-sync Spike → P1, model-runtime Spike → P1, repo restructure + CI/CD → P1 kickoff, OSS-readiness → P2, public release + community → P3. (Ticket creation itself is Phase 0.)
    - [ ] **Define MVP "definition of done" + dogfooding plan:** your (and your wife's) real, messy file systems, verified across all three OSes.
 
 7. **Consistency review pass** — make sure the finished doc set hangs together before anything real is touched.

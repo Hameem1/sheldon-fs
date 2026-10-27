@@ -5,6 +5,8 @@ and foundation work, tracked in a checklist. Get caught up before doing anything
 1. Read the following files in `memory-bank/reimagining/`:
    - `pre-requisites.md`: the Phase 0 checklist. Ticked items are done; the first item with unticked sub-items is where we are.
    - `documentation-principles.md`: the rules for all doc work. Follow them.
+   - `alignment.md`: the source of truth for what we're building and why.
+   - `open-questions.md`: everything still unresolved.
    - `analysis.md`: the initial snapshot of the reimagining. Its questions were answered later; the checklist and newer docs hold those answers and win wherever they disagree.
 2. Read `CLAUDE.md` (its top banner says which sections are outdated) and `initial-idea.txt`
    (the project's origin). Consult the legacy docs (`DATABASE_DESIGN.md`,
