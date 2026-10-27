@@ -80,4 +80,4 @@ light to begin Phase 1.
     - [ ] Run it end-to-end through the workflow (ticket → branch → PR → teammate review → merge), and fold any friction back into `repo-and-collaboration.md` and the Notion setup.
 
 13. **Foundation sign-off** — the explicit handoff from Phase 0 to Phase 1.
-    - [ ] Confirm all Phase 0 items are complete and give the green light to begin Phase 1 (code + code-related infra: repo restructure, CI/CD, then feature work).
+    - [ ] Confirm all Phase 0 items are complete and give the green light to begin Phase 1 (code + code-related infra: repo restructure, CI/CD, then feature work). Retire Phase 0-only files such as `phase-0-onboarding.md`.
