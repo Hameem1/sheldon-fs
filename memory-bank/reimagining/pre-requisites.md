@@ -3,16 +3,19 @@
 **Phase 0** of the reimagining: everything we must lock before dev work begins. It takes us
 from "mid-planning" to "the project is planned, the docs are clean, and tickets are ready for
 the team to pick up." The actual build-out — code and code-related infra (repo restructure,
-CI/CD, features) — is **Phase 1 onward**, defined inside `phases.md`.
+CI/CD, features) — is **Phase 1 onward**, defined inside `phases.md`. One deliberate
+exception: the already-designed database layer is built in Phase 0 as a **pilot PR** that
+dry-runs the whole team workflow before Phase 1 starts (#11).
 
 **How to use:** tick items by flipping `[ ]` → `[x]`. Each numbered item is done when all of
 its sub-items (1–3) are ticked.
 
 **Scope rule:** the planning block (#1–#7) stays inside `memory-bank/reimagining/` and leaves
-the original project files untouched while we cook the plan. Once the plan is locked and
+the original project files untouched while we cook the plan (aside from the interim
+"reimagining in progress" banner already added to `CLAUDE.md`). Once the plan is locked and
 reviewed (#7), the later items deliberately reach into the real project and tooling — rewriting
-`CLAUDE.md` (#8), cleaning up the existing docs (#9), and standing up tickets in Notion (#10).
-The sign-off (#11) is the green light to begin Phase 1 (code).
+`CLAUDE.md` (#8), cleaning up the existing docs (#9), standing up tickets in Notion (#10), and
+shipping the database pilot PR (#11). The sign-off (#12) is the green light to begin Phase 1.
 
 ---
 
@@ -50,7 +53,7 @@ The sign-off (#11) is the green light to begin Phase 1 (code).
    - [ ] Read the full reimagining doc set together; reconcile any contradictions and confirm it's complete and internally consistent before anything in the real project is touched.
 
 8. **Rewrite `CLAUDE.md`** to reflect the new direction (touches an original file; done once the plan above is locked).
-   - [ ] **Supersede the old 8-phase solo roadmap**; align overview / status / phases with the finalized reimagining docs.
+   - [ ] **Supersede the old 8-phase solo roadmap**; align overview / status / phases with the finalized reimagining docs, and remove the interim "reimagining in progress" banner.
    - [ ] **Replace solo conventions** (two-repo structure, session-numbered commits, memory-bank workflow) with the team + monorepo workflow.
    - [ ] **Settle its place in the internal/public split:** keep `CLAUDE.md` the AI source-of-truth and reconcile it with the gitignored AI configs.
 
@@ -64,5 +67,10 @@ The sign-off (#11) is the green light to begin Phase 1 (code).
     - [ ] Derive the backlog from `phases.md` (Phase 1 scope first): epics → tickets with clear acceptance criteria.
     - [ ] Confirm tickets are assignable and the backlog is "ready for dev."
 
-11. **Foundation sign-off** — the explicit handoff from Phase 0 to Phase 1.
+11. **Database layer pilot PR** — implement the already-designed DB layer as the first real ticket, and use it to dry-run the whole team workflow before Phase 1.
+    - [ ] Refresh `DATABASE_DESIGN.md` for the new direction before coding (e.g. machine identity / `sourceSystem` namespaces for the cross-OS DB, migrations from day one since DB files now travel between machines, schema room for the operation journal and embeddings, sync vs. async access per `tech-stack.md`), then file it as a Notion ticket.
+    - [ ] Implement it tightly scoped to the design: schema, connection management, repositories, `FileMetadata` ↔ record conversions, integration tests. No dedup, sync, or AI features.
+    - [ ] Run it end-to-end through the workflow (ticket → branch → PR → teammate review → merge), and fold any friction back into `repo-and-collaboration.md` and the Notion setup.
+
+12. **Foundation sign-off** — the explicit handoff from Phase 0 to Phase 1.
     - [ ] Confirm all Phase 0 items are complete and give the green light to begin Phase 1 (code + code-related infra: repo restructure, CI/CD, then feature work).

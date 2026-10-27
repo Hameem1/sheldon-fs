@@ -2,6 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **⚠️ Reimagining in progress (Phase 0) — parts of this file are outdated.**
+> SheldonFS is being re-planned as a team-built, AI-powered, cross-platform desktop app
+> (Electron + React, with a maintained CLI) that will be open-sourced later. The
+> **Project Overview, Current Status, Immediate Next Steps, and Development Phases** sections
+> below describe the previous solo plan and are **superseded**; the solo workflow conventions
+> (two-repo structure, `session-X` commits, `session-wrapup` skill) are being redesigned.
+> Until this file is rewritten, **`memory-bank/reimagining/` is the source of truth** — start
+> with `pre-requisites.md` (the Phase 0 checklist). Technical details about the existing code
+> (scanner implementation, build setup, commands, TypeScript/lint config) remain accurate.
+
 ## Project Overview
 
 SheldonFS is a cross-platform file organization and management system designed to help users analyze, organize, and manage files across multiple storage systems (Windows, Linux, macOS, and Google Drive). The goal is to identify duplicates, create a robust naming convention, and establish a scalable file organization strategy.
